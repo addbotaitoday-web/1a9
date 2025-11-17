@@ -1,14 +1,18 @@
+// Fix: Add type definition for process.env to resolve TypeScript errors.
+declare var process: {
+  env: {
+    API_KEY: string;
+  };
+};
+
 import { GoogleGenAI, Type } from "@google/genai";
 import type { GradingResult, Exercise, GradedSubProblem } from '../types';
 
-// Fix: Per coding guidelines, the API key must be retrieved from process.env.API_KEY.
-// This also resolves the TypeScript error for 'import.meta.env'.
-const apiKey = process.env.API_KEY;
-
-if (!apiKey) {
+// Fix: Use process.env.API_KEY to initialize the SDK, following guidelines and fixing the original error.
+if (!process.env.API_KEY) {
   throw new Error("API_KEY is not set. Please add it to your environment variables.");
 }
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
