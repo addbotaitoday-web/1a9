@@ -1,12 +1,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { GradingResult, Exercise, GradedSubProblem } from '../types';
 
-// Fix: Adhere to @google/genai guidelines for API key management.
-// The API key must be obtained from process.env.API_KEY, which resolves the TypeScript error.
-if (!process.env.API_KEY) {
-  throw new Error("API_KEY is not set in environment variables.");
+// Fix: Per coding guidelines, the API key must be retrieved from process.env.API_KEY.
+// This also resolves the TypeScript error for 'import.meta.env'.
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+  throw new Error("API_KEY is not set. Please add it to your environment variables.");
 }
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey });
 
 const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
