@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Chức năng chấm điểm bài tập",
+  "description": "Một ứng dụng web sử dụng AI để giúp giáo viên và phụ huynh chấm điểm bài tập toán của học sinh tiểu học một cách nhanh chóng và chính xác. Tải lên đề bài, sau đó tải lên bài làm của học sinh để nhận được điểm số và phản hồi chi tiết.",
+  "requestFramePermissions": []
+}
