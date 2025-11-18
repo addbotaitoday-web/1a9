@@ -1,3 +1,4 @@
+
 // Fix: Add type definition for process.env to resolve TypeScript errors.
 declare var process: {
   env: {
@@ -87,7 +88,7 @@ Chỉ trả về một mảng JSON. Mỗi đối tượng trong mảng đại di
 **LƯU Ý:** Không được tính tổng điểm. Chỉ trả về mảng JSON theo cấu trúc đã quy định.`;
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-pro",
+    model: "gemini-3-pro-preview",
     contents: {
       parts: [
         { text: prompt },

@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 // Fix: Define process.env.API_KEY for client-side use to follow Gemini SDK guidelines.
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+  // Fix: Cast process to any to avoid TypeScript error "Property 'cwd' does not exist on type 'Process'"
+  const env = loadEnv(mode, (process as any).cwd(), '');
   return {
     plugins: [react()],
     define: {
